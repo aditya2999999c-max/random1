@@ -1,0 +1,17 @@
+﻿name: Git Set Go Verification
+
+on:
+  push:
+    branches: [main, git-set-go]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify documentation
+        run: test -s README.md && test -s CONTRIBUTING.md
